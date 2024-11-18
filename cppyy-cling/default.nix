@@ -1,10 +1,11 @@
-{ lib
-, fetchurl
-, fetchFromGitHub
-, python3Packages
-, cmake
-, git
-, setuptools
+{
+  lib,
+  fetchurl,
+  fetchFromGitHub,
+  python3Packages,
+  cmake,
+  git,
+  setuptools,
 }:
 
 let
@@ -30,16 +31,16 @@ python3Packages.buildPythonPackage rec {
       hash = "sha256-BZLAZpVM/tQjEpV8nLJRZURWBk/i2Nq9y4gm8cAJnXE=";
     })
   ];
-  sourceRoot =".";
+  sourceRoot = ".";
 
- nativeBuildInputs = [
-   cmake
-   git
- ];
+  nativeBuildInputs = [
+    cmake
+    git
+  ];
 
   propagatedBuildInputs = [
     setuptools
- ];
+  ];
 
   patchPhase = ''
     # otherwise compiledata.h was not generated
@@ -68,4 +69,3 @@ python3Packages.buildPythonPackage rec {
     maintainers = with maintainers; [ matthiasdotsh ];
   };
 }
-

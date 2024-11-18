@@ -20,11 +20,11 @@ python3Packages.buildPythonPackage rec {
   # There is no CMakeLists.txt in the fetchPypi output,
   # therefore we take the sources from GitHub
   src = fetchFromGitHub {
-       inherit pname version;
-       owner = "wlav";
-       repo = pname;
-       rev = "${pname}-${version}";
-       sha256 = "sha256-ROZ8Zcp00+7LTe/bpY0WHLmbvnXylC9S8IcolQtbOK8=";
+    inherit pname version;
+    owner = "wlav";
+    repo = pname;
+    rev = "${pname}-${version}";
+    sha256 = "sha256-ROZ8Zcp00+7LTe/bpY0WHLmbvnXylC9S8IcolQtbOK8=";
   };
 
   nativeBuildInputs = [
@@ -36,7 +36,10 @@ python3Packages.buildPythonPackage rec {
     cppyy-backend
   ];
 
-  propagatedBuildInputs = [ cppyy-cling cppyy-backend];
+  propagatedBuildInputs = [
+    cppyy-cling
+    cppyy-backend
+  ];
 
   patchPhase = ''
     # Workaround error, that was described in cppyy-backend/default.nix

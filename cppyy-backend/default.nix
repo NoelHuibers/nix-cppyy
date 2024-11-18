@@ -22,7 +22,12 @@ python3Packages.buildPythonPackage rec {
     sha256 = "sha256-jQ7BafbqQNJpmaYbJ0zirIgAgujRaqzmoHApM9PYNfw=";
   };
 
-  nativeBuildInputs = [ setuptools cmake cppyy-cling pip ];
+  nativeBuildInputs = [
+    setuptools
+    cmake
+    cppyy-cling
+    pip
+  ];
   propagatedBuildInputs = [ cppyy-cling ];
 
   patchPhase = ''
@@ -65,7 +70,6 @@ python3Packages.buildPythonPackage rec {
     mkdir -p $out
     env PIP_PREFIX=$out pip install dist/*.whl --no-use-pep517 --no-deps
   '';
-
 
   pythonImportsCheck = [ "cppyy_backend" ];
 
